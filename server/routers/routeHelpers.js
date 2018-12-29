@@ -32,7 +32,7 @@ module.exports = {
       "board": Joi.string(),
       "category": Joi.string().allow(''),
       "title": Joi.string().allow(''),
-      "not_title": Joi.string().allow(null),
+      "not_title": Joi.string().allow([null,'']),
       "rate": Joi.number().integer().min(0).max(100),
       "sub_type": Joi.string().valid('ptt_articles').required()
     })
