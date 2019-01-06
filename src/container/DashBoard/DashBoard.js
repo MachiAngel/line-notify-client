@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from "react-router-dom";
 
-import NavLinkBar from '../../component/NavLinkBar/NavLinkBar'
+// import NavLinkBar from '../../component/NavLinkBar/NavLinkBar'
 
 import TopNavBar from '../../component/TopNavBar/TopNavBar'
 import BottomBar from '../../component/BottomBar/BottomBar'

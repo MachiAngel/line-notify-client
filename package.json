@@ -10,7 +10,6 @@
     "@material-ui/core": "^3.6.0",
     "@material-ui/icons": "^3.0.1",
     "@material-ui/lab": "^3.0.0-alpha.25",
-    "antd-mobile": "^2.2.6",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.1.3",
@@ -53,7 +52,6 @@
     "eject": "react-scripts eject",
     "server": "nodemon --ignore src/ server/server.js",
     "heroku-postbuild": "npm run build"
-    
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -3,16 +3,14 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import './index.css';
 
-// import 'bootstrap/dist/css/bootstrap.min.css'
-// import 'antd-mobile/dist/antd-mobile.css'
 import AppRouter from './routers/AppRouter'
 
 import './config.js'
 
 import configureStore from './store/configureStore'
 
-// U20c2fb6275968599930d9c307b5fe9d6
-
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+ 
 
 import { ConnectedRouter } from 'connected-react-router'
 import { createBrowserHistory } from 'history'
@@ -32,16 +30,25 @@ const options = {
   transition: 'scale'
 }
 
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+})
+
 
 const jsx = (
-  <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <AlertProvider template={AlertTemplate} {...options}>
-        <AppRouter />
-      </AlertProvider>
-    </ConnectedRouter>
-    
-  </Provider>
+  <MuiThemeProvider theme={theme}>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <AlertProvider template={AlertTemplate} {...options}>
+          <AppRouter />
+        </AlertProvider>
+      </ConnectedRouter>
+
+    </Provider>
+  </MuiThemeProvider>
+
 );
 
 ReactDOM.render(jsx, document.getElementById('root'));

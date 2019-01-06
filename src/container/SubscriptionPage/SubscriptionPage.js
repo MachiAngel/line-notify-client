@@ -8,11 +8,11 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
+
 
 import PttPage from '../../component/PttPage/PttPage'
 
-import { loadPttSub } from '../../store/reducers/ptt.reducer'
+import { loadPttSub, loadPttHotbaords } from '../../store/reducers/ptt.reducer'
 import { connect } from 'react-redux'
 
 const styles = theme => ({
@@ -78,16 +78,15 @@ class SubscriptionPage extends Component {
     axios.post('api/v1/subscriptions', { user_line_id: userLineId})
       .then(result => {
 
-        console.log('get subs data')
-        console.log(result.data)
-
+        
+        // console.log(result.data)
         this.setState({
           subs: result.data
         })
 
         //TODO LOAD other data
         this.props.loadPttSub(result.data.subs.pttSubs)
-
+        this.props.loadPttHotbaords(result.data.hotBoards)
       }).catch(e => {
         console.log(e.message)
       })
@@ -103,7 +102,7 @@ class SubscriptionPage extends Component {
   }
 
   render() {
-    const { classes, theme } = this.props;
+    const { classes } = this.props;
     
     //寫死固定 配合api object key
     const { subTypeList, value } = this.state;
@@ -137,7 +136,8 @@ class SubscriptionPage extends Component {
 }
 
 const mapDispatchToProps = {
-  loadPttSub
+  loadPttSub,
+  loadPttHotbaords
 }
 
 const withStyleSubscriptionPage = withStyles(styles, { withTheme: true })(SubscriptionPage)

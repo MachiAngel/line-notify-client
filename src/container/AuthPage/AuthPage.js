@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import queryString from 'query-string'
+
 import axios from 'axios'
 
 import { withRouter } from "react-router-dom";
@@ -11,8 +11,7 @@ class AuthPage extends Component {
   
   componentDidMount() {
 
-    const history = this.props.match
-    const values = queryString.parse(this.props.location.search)
+    // const history = this.props.match
 
     const search = this.props.location.search
 

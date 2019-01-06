@@ -1,7 +1,11 @@
 
-const UserSubModel = require('../model/UserSubModel')
 const db = require('../db/pgdb.js')
+const UserSubModel = require('../model/UserSubModel')
+const PttModel = require('../model/PttModel')
+
 const userSubModel = new UserSubModel({ db })
+const pttModel = new PttModel({ db })
+
 
 
 module.exports = {
@@ -10,7 +14,20 @@ module.exports = {
     const { user_line_id } = req.body
 
     const result = await userSubModel.getAllUserSubscriptions(user_line_id)
-    return res.json({ subs: result, isSucceeded: true, msg: '' })
+    const hotBoards = await pttModel.getPttHotBoards()
+    
+    return res.json({ subs: result, hotBoards, isSucceeded: true, msg: '' })
+  },
+  checkboard: async (req,res,next) => {
+    const { board } = req.body
+
+    
+    if(!board) {
+      return res.json({success:false})
+    }
+
+    const result = await pttModel.checkPttBoard(board)
+    return res.json(result)
   },
 
   addPttSub: async (req, res, next) => {
@@ -37,6 +54,7 @@ module.exports = {
   deletePttSub: async (req, res, next) => {
 
     const { user_line_id, id } = req.body
+    
     const result = await userSubModel.deletePttSubScription({
       user_line_id,
       id
@@ -61,6 +79,10 @@ module.exports = {
     res.json({ result: result, isSucceeded: true, msg: '成功修改' })
 
   },
+  getHotBoard: async (req,res,next) => {
+    const list = await pttModel.getPttHotBoards()
+    res.json({ result: list, isSucceeded: true, msg: '' })
+  }
 
 }
 

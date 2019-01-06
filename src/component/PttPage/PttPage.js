@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 import Grid from '@material-ui/core/Grid';
 
-// import Typography from '@material-ui/core/Typography';
+
 
 
 import Fab from '@material-ui/core/Fab'
@@ -20,7 +20,6 @@ import { pttTags } from '../helper/tags'
 import Paper from '@material-ui/core/Paper';
 import Chip from '@material-ui/core/Chip';
 
-import BlockUi from 'react-block-ui';
 
 const styles = theme => ({
   root: {

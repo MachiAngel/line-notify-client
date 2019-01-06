@@ -15,4 +15,10 @@ router.route('/ptt')
   .delete(AuthController.checkLineId, SubController.deletePttSub)
   .patch(validateBodyOfUpdate(schemas.pttEditSchema), AuthController.checkLineId, SubController.editPttSub)
 
+router.route('/ptt/hotboard')
+  .get(SubController.getHotBoard)
+
+router.route('/ptt/checkboard')
+  .post(SubController.checkboard)
+
 module.exports = router

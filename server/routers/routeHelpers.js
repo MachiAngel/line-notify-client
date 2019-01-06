@@ -28,10 +28,10 @@ module.exports = {
   schemas: {
     pttEditSchema: Joi.object().keys({
       "user_line_id": Joi.string(),
-      "author": Joi.string().allow(''),
+      "author": Joi.string().allow([null, '']),
       "board": Joi.string(),
       "category": Joi.string().allow(''),
-      "title": Joi.string().allow(''),
+      "title": Joi.string().allow([null, '']),
       "not_title": Joi.string().allow([null,'']),
       "rate": Joi.number().integer().min(0).max(100),
       "sub_type": Joi.string().valid('ptt_articles').required()
